@@ -1,0 +1,11 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - apache2
+
+runcmd:
+  - mkdir /home/ubuntu/public_html
+  - sed -i -- 's/<Directory \/var\/www\/html/<Directory \/home\/ubuntu\/public_html/g' /etc/apache2/apache2.conf
+  - sed -i -- 's/DocumentRoot \/var\/www\/html /DocumentRoot \/home\/ubuntu\/public_html/g' /etc/apache2/sites-available/000-default.conf
+  - sudo service apache2 restart
