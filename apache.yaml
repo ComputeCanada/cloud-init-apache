@@ -85,7 +85,7 @@ write_files:
     path: /tmp/setup.py
     permissions: "0700"
 runcmd:
-  - ["echo","-n","127.0.1.1 ",">>","/etc/hosts"]
-  - ["cat","/etc/hostname",">>","/etc/hosts"]
+  - echo -n "127.0.1.1 ">>/etc/hosts
+  - cat /etc/hostname>>/etc/hosts
   - ["/tmp/setup.py","ubuntu"]
   - ["rm","/tmp/setup.py"]
